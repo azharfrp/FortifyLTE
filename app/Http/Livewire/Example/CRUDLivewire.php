@@ -1,8 +1,6 @@
 <?php
 
-namespace App\Http\Livewire;
-
-use File;
+namespace App\Http\Livewire\Example;
 
 // First let's load Livewire trait
 use Livewire\Component;
@@ -12,13 +10,16 @@ use Livewire\WithFileUploads;
 // Let's load an alert
 use Jantinnerezo\LivewireAlert\LivewireAlert;
 
+// Now we need a Laravel Facades
+use Illuminate\Support\Facades\Storage;
+
 // I usualy place 'Model' here
 use App\Models\CRUDExampleTryModel;
 use App\Models\CRUDExampleBaseModel;
 
 class CRUDLivewire extends Component{
-    // Load trait
-    use WithPagination; use WithFileUploads; use LivewireAlert;
+    // Load addon trait
+    use WithPagination, WithFileUploads, LivewireAlert;
 
     // Bootsrap pagination
     protected $paginationTheme = 'bootstrap';
@@ -38,9 +39,9 @@ class CRUDLivewire extends Component{
                 $searchQuery->where([
                     ['crud_example_try_string', 'like', '%' . $searchData . '%']
                 ])->orWhere([
-                    ['crud_example_try_textarea', 'like', '%'.$searchData.'%'],
+                    ['crud_example_try_textarea', 'like', '%' . $searchData . '%'],
                 ])->orWhere([
-                    ['crud_example_base_name', 'like', '%'.$searchData.'%'],
+                    ['crud_example_base_name', 'like', '%' . $searchData . '%'],
                 ]);
             })->paginate($this->paginatedPerPages),
 
@@ -152,10 +153,10 @@ class CRUDLivewire extends Component{
         $sql = CRUDExampleTryModel::select('crud_example_try_id', 'crud_example_try_photo')->where('crud_example_try_id', $id)->firstOrFail();
 
         // Delete Data from DB
-        CRUDExampleTryModel::find($id)->delete();
+        $sql->find($id)->delete();
 
         // Then delete it
-        File::delete('storage/asset/image/' . $sql->crud_example_try_photo);
+        Storage::delete('public/asset/image/' . $sql->crud_example_try_photo);
 
         // Show an alert
         $this->alert('warning', 'Alright, deleted!');

@@ -19,10 +19,10 @@ Route::get('/', function () {
 
 // Home
 Route::group(['middleware' => ['auth'], 'prefix' => 'home'], function() {
-    Route::get('/', App\Http\Livewire\HomeLivewire::class)->name('home');
+    Route::get('/', App\Http\Livewire\Home\HomeLivewire::class)->name('home');
 });
 
 // Example
-Route::group(['middleware' => ['auth'], 'prefix' => 'example'], function() {
-    Route::get('crud', App\Http\Livewire\CRUDLivewire::class)->name('example.crud');
+Route::group(['middleware' => ['auth', 'role:admin|moderator|user'], 'prefix' => 'example'], function() {
+    Route::get('crud', App\Http\Livewire\Example\CRUDLivewire::class)->name('example.crud');
 });

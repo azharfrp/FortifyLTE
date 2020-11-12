@@ -75,12 +75,22 @@ Repository ini hanyalah sedikit pengembangan sederhana dari:
 - [Laravel Livewire](https://laravel-livewire.com/docs)
 - [Livewire Alert](https://github.com/jantinnerezo/livewire-alert)
 - [Turbolinks](https://github.com/turbolinks/turbolinks)
+- [Laravel Permission](https://github.com/spatie/laravel-permission)
 
 Dan lain-lain. Untuk dokumentasi lebih lanjut, silahkan mengacu pada dokumentasi dari masing-masing framework/package tersebut. Terimakasih.
 
 ## Siapa Saya
 
 Nama saya Azhar Fahrurazi, seorang penulis dan juga programmer amatiran dari [Blog Gampangan](http://www.gampangan.com). Mohon maaf jika repository ini tidak/belum sesuai dengan kebutuhan yang kamu miliki.
+
+## Apa yang Baru?
+
+v0.2
+
+- Support Role
+- Proses manajemen berkas ditangani oleh File Storage
+
+Beberapa perubahan mungkin tidak dicantumkan disini.
 
 ## Support
 

@@ -12,18 +12,21 @@ class CRUDExampleTryModel extends Model{
     use HasFactory;
 
     /*
-    || Database info
+    || Table info
     */
     protected $table = 'crud_example_try';
     protected $primaryKey = 'crud_example_try_id';
 
     /*
-    || Database fillable
+    || Table fillable
     */
     protected $fillable = [
         'crud_example_base_id', 'crud_example_try_photo', 'crud_example_try_string', 'crud_example_try_textarea', 'crud_example_try_number',
     ];
 
+    /*
+    || Relationship
+    */
     public function tryBelongsTo(){
         return $this->belongsTo('App\Models\CRUDExampleBaseModel', 'crud_example_base_id');
     }
